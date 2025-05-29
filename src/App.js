@@ -1,43 +1,56 @@
 import { Component } from 'react';
 import './App.css';
 import Home from './components/Home/Home';
-
+import story from "./story.mp4"
+import { BrowserRouter as Router, Routes, Route } from "react-router-dom"
+import Message from './components/Message/Message';
 class App extends Component {
   constructor(props) {
     super(props);
     this.state = {
+      currentStory: null,
+      isStoryOpen: false,
       stories: [
         {
           img:"https://i.pinimg.com/736x/f1/0b/2f/f10b2f25ed648adcb36cc92b66931e87.jpg",
-          userName: "__t1ll.a__"
+          userName: "__t1ll.a__",
+          storyVideo: story,
+
         },
         {
           img:"https://i.pinimg.com/736x/f1/0b/2f/f10b2f25ed648adcb36cc92b66931e87.jpg",
-          userName: "__t1ll.a__"
+          userName: "__t1ll.a__",
+          storyVideo: story,
         },
         {
           img:"https://i.pinimg.com/736x/f1/0b/2f/f10b2f25ed648adcb36cc92b66931e87.jpg",
-          userName: "__t1ll.a__"
+          userName: "__t1ll.a__",
+          storyVideo: story,
         },
         {
           img:"https://i.pinimg.com/736x/f1/0b/2f/f10b2f25ed648adcb36cc92b66931e87.jpg",
-          userName: "__t1ll.a__"
+          userName: "__t1ll.a__",
+          storyVideo: story,
         },
         {
           img:"https://i.pinimg.com/736x/f1/0b/2f/f10b2f25ed648adcb36cc92b66931e87.jpg",
-          userName: "__t1ll.a__"
+          userName: "__t1ll.a__",
+          storyVideo: story,
         },
         {
           img:"https://i.pinimg.com/736x/f1/0b/2f/f10b2f25ed648adcb36cc92b66931e87.jpg",
-          userName: "__t1ll.a__"
+          userName: "__t1ll.a__",
+          storyVideo: story,
         },
         {
           img:"https://i.pinimg.com/736x/f1/0b/2f/f10b2f25ed648adcb36cc92b66931e87.jpg",
-          userName: "__t1ll.a__"
+          userName: "__t1ll.a__",
+          storyVideo: story,
         },
         {
           img:"https://i.pinimg.com/736x/f1/0b/2f/f10b2f25ed648adcb36cc92b66931e87.jpg",
-          userName: "__t1ll.a__"
+          userName: "__t1ll.a__",
+          storyVideo: story,
         },
       ],
       reels:[
@@ -123,16 +136,46 @@ class App extends Component {
         },
         
         
+      ],
+      chats:[
+        {
+          img:"https://i.pinimg.com/736x/f1/0b/2f/f10b2f25ed648adcb36cc92b66931e87.jpg",
+          userName: "EV1L",
+          lastMess: "Reacted 😂 to your message "
+        },
+        {
+          img:"https://i.pinimg.com/736x/f1/0b/2f/f10b2f25ed648adcb36cc92b66931e87.jpg",
+          userName: "EV1L",
+          lastMess: "Reacted 😂 to your message "
+        },
+        {
+          img:"https://i.pinimg.com/736x/f1/0b/2f/f10b2f25ed648adcb36cc92b66931e87.jpg",
+          userName: "EV1L",
+          lastMess: "Reacted 😂 to your message "
+        },
+        {
+          img:"https://i.pinimg.com/736x/f1/0b/2f/f10b2f25ed648adcb36cc92b66931e87.jpg",
+          userName: "EV1L",
+          lastMess: "Reacted 😂 to your message "
+        },
       ]
-    };
+      };
   }
+
+  
 
   render() {
     return (
       <div className="App">
-        <Home 
-        stories={this.state.stories}
-        reels={this.state.reels} />
+        <Router>
+          <Routes>
+            <Route path="/" element={<Home 
+            stories={this.state.stories}
+            reels={this.state.reels}/>} />
+            <Route path="/message" element={<Message
+            chats={this.state.chats} />}/>
+          </Routes>
+        </Router>
       </div>
     );
   }
